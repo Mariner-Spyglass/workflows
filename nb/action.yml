@@ -4,8 +4,12 @@ inputs:
   DUMMY:
     description: 'dummy input so this workflow will work.  No input is required.'
     required: false
+
 runs:
   using: "composite"
+  defaults:
+    run:
+      working-directory: ./deploy2
   steps: 
     - name: Attempt to read notebooks
       run: |
