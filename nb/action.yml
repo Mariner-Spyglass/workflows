@@ -15,6 +15,7 @@ runs:
 
     - name: Check if notebooks are clean
       id: clean
+      working-directory: ${{env.working-directory}}
       run: |
         nbdev_clean_nbs
         if [ -n "$(git status -uno -s)" ]; then
@@ -26,6 +27,7 @@ runs:
       shell: bash
     - name: Check that library syncs with notebooks
       id: lib
+      working-directory: ${{env.working-directory}}
       run: |
         nbdev_diff_nbs > _nbdev_diff_logs.txt
         if [ -n "$(cat _nbdev_diff_logs.txt)" ]; then 
